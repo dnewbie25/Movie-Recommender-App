@@ -20,3 +20,7 @@ def cantidad_filmaciones_mes(mes: str):
 @app.get("/cantidad_filmaciones_dia/{item}")
 def cantidad_filmaciones_dia(dia: str):
     return {"message":f"{functions.cantidad_filmaciones_dia(dia)} cantidad de peliculas que fueron estrenadas los dias {dia.title()}"}
+
+@app.get("/votos_titulo/{item}")
+def total_votos(titulo):
+    return {"message":f""}

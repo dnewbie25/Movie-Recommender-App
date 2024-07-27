@@ -44,6 +44,9 @@ def cantidad_filmaciones_dia(dia):
 
 def total_votos(titulo=""):
   titulo = titulo.title()
-  return movies["title"].str.title()
+  movies["title"] = movies["title"].str.title()
+  movie_to_return = movies.iloc[movies.index[movies["title"] == titulo]]
+  if movie_to_return["vote_count"].iloc[0] >= 2000:
+    return {"message": f"La pelicula {movie_to_return["title"].iloc[0]} fue estrenada el año {movie_to_return["release_year"].iloc[0]}. La misma cuenta con un total de {movie_to_return["vote_count"].iloc[0].astype(int)} valoraciones, con un promedio de {movie_to_return["vote_average"].iloc[0]}"}
 
-print(total_votos())
+print(total_votos("Riddick"))
