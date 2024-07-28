@@ -19,7 +19,7 @@ def cantidad_filmaciones_mes(mes: str):
 
 @app.get('/cantidad_filmaciones_dia/{dia}')
 def cantidad_filmaciones_dia(dia: str):
-    return {'message':f'{functions.cantidad_filmaciones_dia(dia)} cantidad de peliculas que fueron estrenadas los dias {dia.title()}'}
+    return {'message':f"{functions.cantidad_filmaciones_dia(dia)} cantidad de peliculas que fueron estrenadas los dias {dia.title()}"}
 
 @app.get('/score_titulo/{titulo}')
 def score_titulo(titulo):
