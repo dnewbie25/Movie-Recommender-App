@@ -47,6 +47,25 @@ def total_votos(titulo=""):
   movies["title"] = movies["title"].str.title()
   movie_to_return = movies.iloc[movies.index[movies["title"] == titulo]]
   if movie_to_return["vote_count"].iloc[0] >= 2000:
-    return {"message": f"La pelicula {movie_to_return["title"].iloc[0]} fue estrenada el año {movie_to_return["release_year"].iloc[0]}. La misma cuenta con un total de {movie_to_return["vote_count"].iloc[0].astype(int)} valoraciones, con un promedio de {movie_to_return["vote_average"].iloc[0]}"}
+    return {"message": f"La pelicula {movie_to_return["title"].iloc[0]} fue estrenada el año {movie_to_return["release_year"].iloc[0]}. La misma cuenta con un total de {movie_to_return["vote_count"].iloc[0].astype(int)} valoraciones, con un promedio de {movie_to_return["vote_average"].iloc[0].round(2)}"}
 
-print(total_votos("Riddick"))
+def score_titulo(titulo=""):
+  titulo = titulo.title()
+  movies["title"] = movies["title"].str.title()
+  movie_to_return = movies.iloc[movies.index[movies["title"]==titulo]]
+  return {"message": f"La pelicula {movie_to_return["title"].iloc[0]} fue estrenada el año {movie_to_return["release_year"].iloc[0]} con un score/popularidad de {movie_to_return["popularity"].iloc[0].round(2)}"}
+
+def get_actor(actor=""):
+  actor = actor.title()
+  revenue = movies[["id","revenue"]]
+  revenue_actor = actors[["id","actor_name"]].join(revenue.set_index("id"),on="id",how="left")
+  return_movies = revenue_actor[revenue_actor["actor_name"]==actor]["revenue"].sum()
+  total_movies = revenue_actor[revenue_actor["actor_name"]==actor]["revenue"].count()
+  return_avg = revenue_actor[revenue_actor["actor_name"]==actor]["revenue"].mean()
+  return {"message":f"{actor} ha participado de {total_movies} cantidad de filmaciones. Ha conseguido un retorno de {'${:,.2f}'.format(return_movies)} con un promedio de {'${:,.2f}'.format(return_avg)} por filmación"}
+
+def get_director(director=""):
+  movie_costs = movies[["id","title","budget","revenue","release_date"]].set_index("id")
+  directors = crew[(crew["crew_job"]=="Director")&(crew["crew_name"]==director)]
+  directors_movies = directors.join(movie_costs,on="id",how="left")
+  return directors_movies[["id","title","crew_name","crew_job","revenue","budget","release_date"]].rename(columns={"crew_name":"director_name","crew_job":"job"}).to_dict(orient="records")
