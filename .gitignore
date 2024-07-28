@@ -109,4 +109,8 @@ venv.bak/
 
 
 # File and folders
-.Machine Learning Model/credits.csv
+Machine Learning Model/credits_dataset_final.csv
+Machine Learning Model/credits_unnested.csv
+Machine Learning Model/final_movie_set.csv
+Machine Learning Model/movies_dataset_final.csv
+Machine Learning Model/movies_dataset.csv
