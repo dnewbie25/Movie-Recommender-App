@@ -7,7 +7,7 @@ app = FastAPI()
 
 @app.get('/home')
 async def root():
-    return {'message': 'Welcome to my Machine Engineering Project'}
+    return {'message': 'Welcome to my Data Engineering Project!!'}
 
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
