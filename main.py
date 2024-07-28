@@ -27,7 +27,7 @@ def score_titulo(titulo):
 
 @app.get("/votos_titulo/{titulo}")
 def votos_titulo(titulo):
-    return {"message":f"{functions.total_votos(titulo)["message"]}"}
+    return functions.total_votos(titulo)
 
 @app.get("/get_actor/{actor}")
 def get_actor(actor=""):
