@@ -4,7 +4,6 @@ import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 
 movies = pd.read_csv('Machine Learning Model/movies_dataset_cleaned.csv')
-final_data_set = pd.read_csv('Machine Learning Model/final_movie_set.csv',compression='gzip')
 actors = pd.read_csv('Machine Learning Model/actors.csv',compression='gzip')
 crew = pd.read_csv('Machine Learning Model/crew.csv',compression='gzip')
 
