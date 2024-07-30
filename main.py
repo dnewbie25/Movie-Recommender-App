@@ -36,3 +36,7 @@ def get_actor(actor=''):
 @app.get('/get_director/{director}')
 def get_director(director=''):
     return functions.get_director(director)
+
+@app.get('/movie_recommender/{titulo}')
+def movie_recommender(titulo=''):
+    return functions.recommend_movie(titulo)

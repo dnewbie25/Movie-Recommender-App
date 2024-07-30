@@ -1,11 +1,14 @@
 '''Este archivo devuelve las funciones correspondientes para la API'''
 
 import pandas as pd
+from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import OneHotEncoder
+import numpy as np
 
 movies = pd.read_csv('Machine Learning Model/movies_dataset_cleaned.csv')
 actors = pd.read_csv('Machine Learning Model/actors.csv',compression='gzip')
 crew = pd.read_csv('Machine Learning Model/crew.csv',compression='gzip')
+ml_dataset = pd.read_csv('Machine Learning Model/final_movie_set.csv', compression='gzip')
 
 def cantidad_filmaciones_mes(mes):
   meses = {
@@ -49,7 +52,7 @@ def total_votos(titulo=''):
     return {'message': f"La pelicula {movie_to_return['title'].iloc[0]} fue estrenada el año {movie_to_return['release_year'].iloc[0]}. La misma cuenta con un total de {movie_to_return['vote_count'].iloc[0].astype(int)} valoraciones, con un promedio de {movie_to_return['vote_average'].iloc[0].round(2)}"}
   else:
     return {'message':'La pelicula no cuenta con la cantidad de votaciones requerida para mostrar la informacion'}
-print(total_votos('Riddick'))
+
 
 def score_titulo(titulo=''):
   titulo = titulo.title()
@@ -66,9 +69,23 @@ def get_actor(actor=''):
   total_movies = revenue_actor[revenue_actor['actor_name']==actor]['revenue'].count()
   return_avg = revenue_actor[revenue_actor['actor_name']==actor]['revenue'].mean()
   return {'message':f"{actor} ha participado de {total_movies} cantidad de filmaciones. Ha conseguido un retorno de {'${:,.2f}'.format(return_movies)} con un promedio de {'${:,.2f}'.format(return_avg)} por filmación"}
-print(get_actor("Tom Hanks"))
+
 def get_director(director=''):
   movie_costs = movies[['id','title','budget','revenue','release_date']].set_index('id')
   directors = crew[(crew['crew_job']=='Director')&(crew['crew_name']==director)]
   directors_movies = directors.join(movie_costs,on='id',how='left')
   return directors_movies[['id','title','crew_name','crew_job','revenue','budget','release_date']].rename(columns={'crew_name':'director_name','crew_job':'job'}).to_dict(orient='records')
+
+def recommend_movie(title=""):
+  movie_title = ml_dataset["title"]
+  encoder = OneHotEncoder()
+  title_encoded = encoder.fit_transform(movie_title.values.reshape(-1,1))
+  recommender = NearestNeighbors(metric='cosine')
+  recommender.fit(title_encoded)
+
+  title_index = ml_dataset.index[ml_dataset['title']==title]
+  num_recommendations = 8
+
+  _, recommendations2 = recommender.kneighbors(title_encoded[title_index].toarray(), n_neighbors=num_recommendations)
+  recommended_movie_titles = ml_dataset.iloc[recommendations2[0]]['title']
+  return {'recommended_movies':list(recommended_movie_titles.values[-5:])}
