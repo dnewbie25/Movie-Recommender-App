@@ -7,11 +7,7 @@ app = FastAPI()
 
 @app.get('/home')
 async def root():
-    return {'message': 'Welcome to my Data Engineering Project!!'}
-
-@app.get('/items/{item_id}')
-def read_item(item_id: int, q: Optional[str] = None):
-    return {'item_id': item_id, 'q': q}
+    return {'message': 'Welcome to my Data Engineering Project!! Please enter https://movie-recommender-app-ejx7.onrender.com/docs to see the full API'}
 
 @app.get('/cantidad_filmaciones_mes/{mes}')
 def cantidad_filmaciones_mes(mes: str):
