@@ -33,6 +33,8 @@ def get_actor(actor=''):
 def get_director(director=''):
     return functions.get_director(director)
 
-@app.get('/movie_recommender/{titulo}')
-def movie_recommender(titulo=''):
-    return functions.recommend_movie(titulo)
+
+# the ML model is using more than the allocated RAM, need to optimize
+# @app.get('/movie_recommender/{titulo}')
+# def movie_recommender(titulo=''):
+#     return functions.recommend_movie(titulo)
