@@ -42,4 +42,3 @@ Uno de los objetivos era poder crear una API usando FastAPI para poder recibir r
 - `movie_recommender/{titulo}`: Esta función realiza la recomendación de películas usando el modelo de clasificación de K-Vecinos Cercanos. Aunque esta función ha podido ejecutarse, la instancia de Render usada no posee suficiente memoria RAM, por tanto en ocasiones puede dar un error 502, pues solo cuenta con 512 MB de memoria.
 
 Además se tienen dos archivos donde se hace un análisis exploratorio de los datos junto con los archivos donde se hicieron las limpiezas de los datos en bruto. Los archivos son Jupyter Notebooks, los cuales están en la carpeta `Machine Learning Model`, donde los archivos para la limpieza terminan en `_Cleaning.ipynb` y los del análisis exploratorio de datos terminan en `_Analysis.ipynb`.
-
