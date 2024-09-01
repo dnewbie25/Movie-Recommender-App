@@ -3,7 +3,6 @@
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import OneHotEncoder
-import numpy as np
 
 movies = pd.read_csv('Machine Learning Model/movies_dataset_cleaned.csv')
 actors = pd.read_csv('Machine Learning Model/actors.csv',compression='gzip')
