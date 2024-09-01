@@ -1,6 +1,6 @@
 # Movie Recommender App
 
-[Live Demo](https://movie-recommender-app-ejx7.onrender.com/docs) desplegada en Render.
+[Live Demo](https://movie-recommender-app-ejx7.onrender.com/) desplegada en Render.
 
 El objetivo de esta app es poder crear un sistema de recomendación de 5 películas según la película que se ingrese, sin embargo, esta es solo la tarea final.
 
