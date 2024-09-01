@@ -24,6 +24,8 @@
 
 </details>
 
+![Preview](image.png)
+
 El objetivo de esta app es poder crear un sistema de recomendación de 5 películas según la película que se ingrese, sin embargo, esta es solo la tarea final.
 
 Uno de los objetivos era poder crear una API usando FastAPI para poder recibir resultados según los parámetros establecidos.Habrán 6 endpoints, los cuales deberán retornar los siguientes datos:
