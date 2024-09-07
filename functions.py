@@ -4,10 +4,10 @@ import pandas as pd
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import OneHotEncoder
 
-movies = pd.read_csv('Machine Learning Model/movies_dataset_cleaned.csv')
-actors = pd.read_csv('Machine Learning Model/actors.csv',compression='gzip')
-crew = pd.read_csv('Machine Learning Model/crew.csv',compression='gzip')
-ml_dataset = pd.read_csv('Machine Learning Model/final_movie_set.csv', compression='gzip')
+movies = pd.read_parquet('Machine Learning Model/movies_dataset_cleaned.parquet', engine='pyarrow')
+actors = pd.read_parquet('Machine Learning Model/actors.parquet', engine='pyarrow')
+crew = pd.read_parquet('Machine Learning Model/crew.parquet', engine='pyarrow')
+ml_dataset = pd.read_parquet('Machine Learning Model/final_movie_set.parquet', engine='pyarrow')
 
 def cantidad_filmaciones_mes(mes):
   meses = {
