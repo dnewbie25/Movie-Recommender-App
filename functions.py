@@ -1,8 +1,10 @@
 '''Este archivo devuelve las funciones correspondientes para la API'''
 
 import pandas as pd
-from sklearn.neighbors import NearestNeighbors
-from sklearn.preprocessing import OneHotEncoder
+
+'''sklearn no se ejecuta en este branch del proyecto, pues Render no posee memoria suficiente. Deberá ejecutarse en local'''
+# from sklearn.neighbors import NearestNeighbors
+# from sklearn.preprocessing import OneHotEncoder
 
 movies = pd.read_parquet('Machine Learning Model/movies_dataset_cleaned.parquet', engine='pyarrow')
 actors = pd.read_parquet('Machine Learning Model/actors.parquet', engine='pyarrow')
@@ -75,16 +77,19 @@ def get_director(director=''):
   directors_movies = directors.join(movie_costs,on='id',how='left')
   return directors_movies[['id','title','crew_name','crew_job','revenue','budget','release_date']].rename(columns={'crew_name':'director_name','crew_job':'job'}).to_dict(orient='records')
 
-def recommend_movie(title=""):
-  movie_title = ml_dataset["title"]
-  encoder = OneHotEncoder()
-  title_encoded = encoder.fit_transform(movie_title.values.reshape(-1,1))
-  recommender = NearestNeighbors(metric='cosine')
-  recommender.fit(title_encoded)
 
-  title_index = ml_dataset.index[ml_dataset['title']==title]
-  num_recommendations = 8
+'''Esta es la función de recomendación, se deja inactiva para la ejecución en Render'''
 
-  _, recommendations2 = recommender.kneighbors(title_encoded[title_index].toarray(), n_neighbors=num_recommendations)
-  recommended_movie_titles = ml_dataset.iloc[recommendations2[0]]['title']
-  return {'recommended_movies':list(recommended_movie_titles.values[-5:])}
+# def recommend_movie(title=""):
+#   movie_title = ml_dataset["title"]
+#   encoder = OneHotEncoder()
+#   title_encoded = encoder.fit_transform(movie_title.values.reshape(-1,1))
+#   recommender = NearestNeighbors(metric='cosine')
+#   recommender.fit(title_encoded)
+
+#   title_index = ml_dataset.index[ml_dataset['title']==title]
+#   num_recommendations = 8
+
+#   _, recommendations2 = recommender.kneighbors(title_encoded[title_index].toarray(), n_neighbors=num_recommendations)
+#   recommended_movie_titles = ml_dataset.iloc[recommendations2[0]]['title']
+#   return {'recommended_movies':list(recommended_movie_titles.values[-5:])}
