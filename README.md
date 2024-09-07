@@ -1,18 +1,27 @@
 # Movie Recommender App
 
 [Live Demo](https://movie-recommender-app-ejx7.onrender.com/docs) desplegada en Render. Este Live Demo dirige hacia la página por default creada con FastAPI para evaluar los endpoints:
+
 <details>
+  
 <summary>Pueden ver la previsualización aquí</summary>
+
 ## Preview
+
 ![image](https://github.com/user-attachments/assets/05d10a0d-e5d2-4553-a924-03a3262daf03)
+
 </details>
 
 [Live Demo](https://movie-recommender-app-ejx7.onrender.com/) desplegada en Render. Este otro Live Demo es una pequeña página que hice con HTML, Javascript y Tailwind CSS para interactuar con la API. Esta versión no posee el acceso a la función de `movie_recommender` por limitaciones de memoria:
 
 <details>
+  
 <summary>Pueden ver la previsualización aquí</summary>
+
 ## Preview
+
 ![image](https://github.com/user-attachments/assets/d32dfb49-86d7-452e-8fa9-8ee676f9cb75)
+
 </details>
 
 El objetivo de esta app es poder crear un sistema de recomendación de 5 películas según la película que se ingrese, sin embargo, esta es solo la tarea final.
