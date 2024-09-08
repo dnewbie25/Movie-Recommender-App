@@ -12,7 +12,7 @@
 
 </details>
 
-[Live Demo](https://movie-recommender-app-ejx7.onrender.com/) desplegada en Render. Este otro Live Demo es una pequeña página que hice con HTML, Javascript y Tailwind CSS para interactuar con la API. Esta versión no posee el acceso a la función de `movie_recommender` por limitaciones de memoria. Para no mezclar ambos trabajos, la página se creó y se desplegó desde el branch llamado `templating`:
+[Live Demo](https://movie-recommender-app-ejx7.onrender.com/) desplegada en Render. Este otro Live Demo es una pequeña página que hice con HTML, Javascript y Tailwind CSS para interactuar con la API. Esta versión no posee el acceso a la función de `movie_recommender` por limitaciones de memoria. Para no mezclar ambos trabajos pues el repositorio ya estaba teniendo un tamaño considerable, la página se creó y se desplegó desde el branch llamado `templating`:
 
 <details>
   
