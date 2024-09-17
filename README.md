@@ -18,13 +18,17 @@
   
 <summary>Pueden ver la previsualización aquí</summary>
 
-## Preview
+## Preview del UI de la app
+
+Esta versión no posee directamente el acceso a la función `movie_recommender` debido a limitaciones de memoria en Render.
 
 ![image](https://github.com/user-attachments/assets/d32dfb49-86d7-452e-8fa9-8ee676f9cb75)
 
-</details>
+## Preview de la app desde FastAPI
 
-![Preview](image.png)
+![Screenshot_16-9-2024_223411_movie-recommender-app-ejx7 onrender com](https://github.com/user-attachments/assets/60b3c4b4-163b-4c6e-8419-ac6f8910128d)
+
+</details>
 
 El objetivo de esta app es poder crear un sistema de recomendación de 5 películas según la película que se ingrese, sin embargo, esta es solo la tarea final.
 
